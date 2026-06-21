@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <title>
+        Mini Message Board
+    </title>
+</head>
+
+<body>
+    <ul>
+        <% messages.map((msg)=> { %>
+            <li>
+                <%= msg.text%> <br>
+                    <%= msg.user%> <br>
+                        <%= msg.added%>
+
+            </li>
+            <% }) %>
+    </ul>
+</body>
+
+</html>
