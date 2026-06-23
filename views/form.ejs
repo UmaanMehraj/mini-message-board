@@ -2,18 +2,28 @@
 
 <head>
     <title>Form</title>
+    <link rel="stylesheet" href="form.css">
 </head>
-<h2>
-    New Message
-</h2>
-<form action="/new" method="post">
-    <label for="authorName">
-        <input type="text" name="authorName" id="authorName" placeholder="Name">
-    </label>
-    <label for="message">
-        <textarea name="message" id="message" placeholder="Enter your message"></textarea>
-    </label>
-    <button type="submit">Submit</button>
-</form>
+
+<body>
+    <div class="heading">
+        <header>
+            <h2>
+                New Message
+            </h2>
+        </header>
+    </div>
+    <div class="container">
+        <form action="/new" method="post">
+            <label for="authorName"> Name:
+                <input type="text" name="authorName" id="authorName" placeholder="Name">
+            </label>
+            <label for="message">Message:
+                <textarea name="message" id="message" placeholder="Enter your message"></textarea>
+            </label>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
 
 </html>
