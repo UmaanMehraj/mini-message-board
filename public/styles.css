@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.message {
+  min-height: 10rem;
+  max-width: 100%;
+  border: 2px dashed blue;
+}
+
+.link {
+  max-height: 3rem;
+  max-width: 10rem;
+  box-sizing: content-box;
+  padding: 1rem;
+  border: 2px solid blue;
+}
