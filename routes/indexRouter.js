@@ -20,6 +20,11 @@ indexRouter.get('/', (req, res) => {
     res.render('index', { messages: messages })
 })
 
+indexRouter.get('/message/:id', (req, res) => {
+    const index = Number(req.params.id)
+    res.render("message", { message: messages[index - 1] })
+})
+
 indexRouter.get('/new', (req, res) => {
     res.render('form')
 })
