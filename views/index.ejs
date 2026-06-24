@@ -21,8 +21,9 @@
                 <%= messages[i].text%> <br>
                     <%= messages[i].user%> <br>
                         <%= messages[i].added%>
-                            <a href="<%= `/message/${i + 1}` %>">Open</a>
+
             </div>
+            <a href="<%= `/message/${i + 1}` %>" id="open">Open</a>
             <% }%>
 
                 <div class="link">

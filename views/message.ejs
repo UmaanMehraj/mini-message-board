@@ -4,20 +4,24 @@
     <title>
         Message Details
     </title>
-    <link rel="stylesheet" href="message.css">
 </head>
 
 <body>
-    <div class="heading">
+    <div class="heading" style="display: flex; ; justify-content: center;">
         <h2>
             Message Details
         </h2>
     </div>
-    <div class="container">
+    <div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
         <div class="message">
             Text: <%= message.text %> <br>
                 By: <%= message.user %> <br>
                     Date: <%= message.added %>
+
+
+        </div>
+        <div>
+            <a href="/">Home</a>
         </div>
     </div>
 </body>

@@ -25,3 +25,12 @@
   padding: 1rem;
   border: 2px solid blue;
 }
+
+#open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 4rem;
+  border: 2px dashed red;
+}
