@@ -13,6 +13,10 @@ const PORT = 3000
 
 app.use('/', indexRouter)
 
+app.get('/{*splat}', (req, res) => {
+    res.send("Error Page not found")
+})
+
 
 app.listen(PORT, (err) => {
     if (err) {
