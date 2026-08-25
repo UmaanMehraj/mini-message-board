@@ -3,9 +3,7 @@ const db = require('../db/queries')
 
 async function getMessages(req, res) {
     const messages = await db.getAllMessages()
-    const texts = messages.map((msg) => msg.text)
-
-    res.send('Messages: ', texts.map((text) => text))
+    res.render("index", { messages: messages })
 }
 
 async function createMessage(req, res) {
