@@ -1,4 +1,5 @@
-const { Router } = require('express')
+const { Router } = require('express');
+const { getMessages, createMessage, createMessagePost } = require('../controllers/indexController');
 
 const indexRouter = Router()
 
@@ -16,22 +17,15 @@ const messages = [
 ];
 
 
-indexRouter.get('/', (req, res) => {
-    res.render('index', { messages: messages })
-})
+indexRouter.get('/', getMessages)
 
 indexRouter.get('/message/:id', (req, res) => {
     const index = Number(req.params.id)
     res.render("message", { message: messages[index - 1] })
 })
 
-indexRouter.get('/new', (req, res) => {
-    res.render('form')
-})
+indexRouter.get('/new', createMessage)
 
-indexRouter.post('/new', (req, res) => {
-    messages.push({ text: req.body.message, user: req.body.authorName, added: new Date() })
-    res.redirect('/')
-})
+indexRouter.post('/new', createMessagePost)
 
 module.exports = indexRouter
