@@ -1,18 +1,15 @@
 require('dotenv').config();
+try {
+    require('net').setDefaultAutoSelectFamily(false);
+} catch (e) {
+    // older Node version, ignore
+}
 
 const { Pool } = require('pg');
 
-const url = new URL(process.env.DATABASE_URL);
-
 const pool = new Pool({
-    user: decodeURIComponent(url.username),
-    password: decodeURIComponent(url.password),
-    host: url.hostname,
-    port: 5432,
-    database: url.pathname.slice(1),
-    ssl: {
-        require: true
-    }
+    connectionString: process.env.DATABASE_URL,
+    connectionTimeoutMillis: 10000,
 });
 
 console.log('pool created');

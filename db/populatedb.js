@@ -1,9 +1,13 @@
 require('dotenv').config();
+const pool = require('./pool');
 
-const { Client } = require('pg');
-
-const SQL = `
-INSERT INTO messages (text, user)
+const SQL = `CREATE TABLE IF NOT EXISTS messages (
+    id SERIAL PRIMARY KEY,
+    text VARCHAR(255) NOT NULL,
+    "user" VARCHAR(255) NOT NULL,
+    added TIMESTAMP DEFAULT NOW()
+);
+INSERT INTO messages (text, "user")
 VALUES
     ('Hi', 'Orlando'),
     ('Hello', 'Bloom'),
@@ -12,25 +16,18 @@ VALUES
 
 async function main() {
     console.log('seeding...');
-
-    const url = new URL(process.env.DATABASE_URL);
-
-    const client = new Client({
-        user: decodeURIComponent(url.username),
-        password: decodeURIComponent(url.password),
-        host: url.hostname,
-        port: 5432,
-        database: url.pathname.slice(1),
-        ssl: {
-            require: true
-        }
-    });
-
-    await client.connect();
-    await client.query(SQL);
-    await client.end();
-
-    console.log('done');
+    const client = await pool.connect();
+    try {
+        await client.query(SQL);
+        console.log('done');
+    } finally {
+        client.release();
+    }
 }
 
-main().catch(console.error);
+main()
+    .catch((err) => {
+        console.error('Seeding failed:', err);
+        process.exitCode = 1;
+    })
+    .finally(() => pool.end());
