@@ -1,8 +1,11 @@
+const { text } = require('express')
 const db = require('../db/queries')
 
 async function getMessages(req, res) {
     const messages = await db.getAllMessages()
-    res.send('Messages: ', messages.map(message => message.text).join(','))
+    const texts = messages.map((msg) => msg.text)
+
+    res.send('Messages: ', texts.map((text) => text))
 }
 
 async function createMessage(req, res) {
